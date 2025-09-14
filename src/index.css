@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* ============ Global ============ */
+@layer base {
+  body {
+    @apply m-0 font-sans antialiased text-gray-900;
+  }
+  code {
+    @apply font-mono;
+  }
+  .home-page {
+    @apply font-sans;
+  }
+}
+
+/* ============ Navbar ============ */
+@layer components {
+  .navbar {
+    @apply fixed w-full flex items-center justify-between h-20 px-5 text-lg transition-colors duration-300 ease-in-out bg-transparent z-50;
+  }
+  .navbar-scrolled {
+    @apply bg-[#1B2340] shadow-md;
+  }
+  .navbar-brand {
+    @apply flex items-center h-full text-[#F5D386] hover:text-white transition-colors duration-300;
+  }
+  .navbar-brand img {
+    @apply max-h-24 block;
+  }
+  .navbar-link {
+    @apply text-[#F5D386] text-lg px-4 h-20 flex items-center no-underline transition-colors duration-300 hover:text-white;
+  }
+  
+  @screen max-md {
+    .navbar {
+      @apply flex-col h-auto py-4 text-base;
+    }
+    .navbar-header {
+      @apply w-full flex justify-between items-center;
+    }
+    .navbar-collapse {
+      @apply w-full mt-3;
+    }
+    .navbar-right {
+      @apply flex flex-col items-center space-y-2;
+    }
+    .navbar-link {
+      @apply justify-center;
+    }
+  }
+}
+
+/* ============ Hero ============ */
+@layer components {
+  .hero-section {
+    @apply relative w-full h-screen flex items-center justify-start bg-[#222] transition duration-700 ease-in-out overflow-hidden;
+  }
+  .hero-video {
+    @apply absolute inset-0 w-full h-full object-cover -z-10;
+  }
+  .overlay {
+    @apply relative z-10 w-full h-full flex items-center justify-start pl-[10%] bg-black/40 transition duration-700;
+  }
+  .home-page.scrolled .hero-section {
+    @apply brightness-110;
+  }
+  .home-page.scrolled .overlay {
+    @apply bg-black/20;
+  }
+  .hero-text, .hero-content {
+    @apply text-white max-w-xl;
+  }
+  .hero-text h1, .hero-content h1 {
+    @apply text-5xl font-bold;
+  }
+  .hero-text p {
+    @apply text-xl mt-4;
+  }
+  .hero-btn {
+    @apply inline-block px-6 py-3 bg-cyan-500 text-white text-lg font-semibold rounded-lg transition duration-300 ease-in-out hover:bg-black hover:-translate-y-1 shadow-md;
+  }
+}
+
+/* ============ Mission Section ============ */
+@layer components {
+  .mission-section {
+    @apply bg-[#f5f7fa] text-[#1B2340] py-20 px-5 text-center;
+  }
+
+  .mission-item {
+    @apply transition duration-300 ease-in-out;
+  }
+
+  .mission-img {
+    @apply w-full h-64 md:h-72 lg:h-80 object-cover rounded-xl transition duration-500 ease-in-out;
+  }
+
+  .mission-item:hover .mission-img {
+    @apply scale-105 shadow-xl;
+  }
+
+  .mission-item h4 {
+    @apply mt-2 text-2xl md:text-3xl font-semibold;
+  }
+
+  .mission-item p {
+    @apply text-lg text-gray-600 mt-2;
+  }
+
+}
+
+/* ============ Achievements ============ */
+@layer components {
+  .achievements-section {
+    @apply bg-[#1B2340] text-[#F5D386] py-20 text-center;
+  }
+  .achievements-grid {
+    @apply grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+  }
+  .achievement-card {
+    @apply p-6 rounded-xl shadow transition-all duration-300;
+  }
+  .achievement-card i {
+    @apply text-[#F5D386] mb-3;
+  }
+  .achievement-card h3 {
+    @apply text-2xl font-bold text-white;
+  }
+  .achievement-card p {
+    @apply text-[#F5D386] mt-2;
+  }
+  .achievement-card:hover {
+    @apply bg-[#1B2340] shadow-xl;
+  }
+  .achievements-btn {
+    @apply px-6 py-3 text-base rounded-lg bg-[#F5D386] text-[#1B2340] font-semibold transition-colors;
+  }
+}
+
+
+/* ============ About Page ============ */
+@layer components {
+  .about-page {
+    @apply bg-[#f7f9fc] text-[#1B2340] pb-20;
+  }
+  .about-hero {
+    @apply w-full h-[70vh] relative overflow-hidden;
+  }
+  .hero-img {
+    @apply w-full h-full object-cover -mt-16;
+  }
+  .about-title {
+    @apply text-4xl font-bold mb-5;
+  }
+  .about-subtitle {
+    @apply text-xl max-w-3xl mx-auto text-gray-600;
+  }
+  .diagonal-row {
+    @apply flex flex-wrap justify-center gap-8;
+  }
+  .block {
+    @apply flex-1 text-center p-12 rounded-xl shadow-md cursor-pointer transition duration-300 hover:scale-105 hover:shadow-xl;
+  }
+  .block-blue {
+    @apply bg-[#1B2340] text-white;
+  }
+  .block-reflect {
+    @apply bg-[#F5D386] text-[#1B2340];
+  }
+  .block h4 {
+    @apply text-xl font-semibold mb-3;
+  }
+  .block p {
+    @apply text-lg leading-relaxed;
+  }
+}
+
+/* ============ Timeline ============ */
+@layer components {
+  .timeline {
+    @apply relative my-12;
+  }
+  .timeline::after {
+    content: '';
+    @apply absolute w-1 bg-[#1B2340] top-0 bottom-0 left-1/2 -ml-[2px];
+  }
+  .timeline-item {
+    @apply relative w-1/2 p-10 box-border;
+  }
+  .timeline-item.left {
+    @apply left-0 text-right;
+  }
+  .timeline-item.right {
+    @apply left-1/2 text-left;
+  }
+  .timeline-content {
+    @apply bg-[#E5EAF5] text-[#1B2340] p-6 rounded-xl shadow-md transition duration-300 hover:scale-105 hover:shadow-xl;
+  }
+}
+
+/* ============ Services ============ */
+@layer components {
+  .services-page {
+    @apply bg-[#f7f9fc] text-[#1B2340] py-24;
+  }
+  .section-title h2 {
+    @apply text-4xl font-bold mb-4;
+  }
+  .section-title p {
+    @apply text-xl text-gray-600;
+  }
+  .service-card {
+    @apply bg-[#E5EAF5] rounded-xl p-12 transition duration-300 cursor-pointer hover:scale-105 hover:shadow-xl;
+  }
+  .service-icon {
+    @apply text-5xl text-[#1B2340] mb-6;
+  }
+  .service-card h4 {
+    @apply text-2xl font-semibold mb-4;
+  }
+  .service-card p {
+    @apply text-lg leading-relaxed;
+  }
+}
+
+/* ============ Blog & Expandable ============ */
+@layer components {
+  .expandable-content {
+    @apply max-h-0 overflow-hidden transition-all duration-500;
+  }
+  .expandable-content.expanded {
+    @apply max-h-[2000px] py-4;
+  }
+  .blog-card {
+    @apply transition duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  .blog-content-wrapper {
+    @apply overflow-hidden max-h-0 transition-all duration-500;
+  }
+  .blog-content-wrapper.expanded {
+    @apply py-2;
+  }
+}
+
+/* ============ Footer ============ */
+@layer components {
+  .footer {
+    @apply bg-[#222] text-gray-400 p-5 text-center;
+  }
+  .footer a {
+    @apply text-sky-400 no-underline hover:underline;
+  }
+}
