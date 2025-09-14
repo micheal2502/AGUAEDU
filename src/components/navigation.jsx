@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from 'lucide-react';
 import navLinks from ".";
 
 export const Navigation = () => {
@@ -13,15 +14,14 @@ export const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isServicePage = location.pathname === "/services";
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-      <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-[#1B2340] shadow-md" : "bg-[#000000]"
-        }`}
-      >
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#1B2340] shadow-md" : "bg-[#000000]"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between px-5 h-20">
         {/* Logo */}
         <Link
@@ -32,21 +32,27 @@ export const Navigation = () => {
           Agua International Education
         </Link>
 
-        {/* Hamburger button (mobile) */}
+        {/* Hamburger Button */}
+
         <button
-          className="md:hidden flex flex-col justify-center items-center space-y-1 w-8 h-8 text-[#F5D386] focus:outline-none"
+          className="md:hidden p-2 rounded hover:bg-gray-200"
           onClick={toggleMenu}
         >
-          <span className="block w-6 h-0.5 bg-current"></span>
-          <span className="block w-6 h-0.5 bg-current"></span>
-          <span className="block w-6 h-0.5 bg-current"></span>
+          {menuOpen ? (
+            <X className="w-6 h-6 text-white" />
+          ) : (
+            <Menu className="w-6 h-6 text-white" />
+          )}
         </button>
 
-        {/* Menu items */}
+        {/* Menu Items */}
         <ul
-          className={`absolute md:static top-20 left-0 w-full md:w-auto bg-[#1B2340] md:bg-transparent flex flex-col md:flex-row md:items-center md:space-x-6 text-lg transition-all duration-300 ${
-            menuOpen ? "flex" : "hidden md:flex"
-          }`}
+          className={`md:flex md:items-center md:space-x-6 text-lg transition-all duration-300
+            ${
+              menuOpen
+                ? "flex flex-col absolute top-20 left-0 w-full bg-[#1B2340] md:static md:flex-row"
+                : "hidden"
+            }`}
         >
           {navLinks.map((link) => (
             <li key={link.path} className="text-center md:text-left">

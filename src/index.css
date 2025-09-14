@@ -31,23 +31,6 @@
     @apply text-[#F5D386] text-lg px-4 h-20 flex items-center no-underline transition-colors duration-300 hover:text-white;
   }
   
-  @screen max-md {
-    .navbar {
-      @apply flex-col h-auto py-4 text-base;
-    }
-    .navbar-header {
-      @apply w-full flex justify-between items-center;
-    }
-    .navbar-collapse {
-      @apply w-full mt-3;
-    }
-    .navbar-right {
-      @apply flex flex-col items-center space-y-2;
-    }
-    .navbar-link {
-      @apply justify-center;
-    }
-  }
 }
 
 /* ============ Hero ============ */
